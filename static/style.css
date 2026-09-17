@@ -1,0 +1,425 @@
+@import url('[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap)');
+
+:root {
+    --bg-main: #121212;
+    --bg-panel: #1e1e1e;
+    --bg-input: #2a2a2a;
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    --border-color: #3f3f46;
+    
+    /* Bảng màu chuẩn */
+    --color-blue: #3b82f6;
+    --color-blue-hover: #2563eb;
+    --color-green: #10b981;
+    --color-red: #ef4444;
+    --color-orange: #ff7b00;
+    --color-purple: #8b5cf6;
+    
+    /* Bo góc và hiệu ứng */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --shadow-panel: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #fff, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* ============================================================
+   PANELS & LAYOUT
+   ============================================================ */
+.panel {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-panel);
+    transition: var(--transition);
+}
+
+.panel:hover {
+    border-color: #52525b;
+}
+
+.form-row, 
+.button-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ============================================================
+   FORMS & INPUTS
+   ============================================================ */
+input[type="text"],
+input[type="file"] {
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: var(--transition);
+    outline: none;
+}
+
+input[type="text"] {
+    width: 280px;
+}
+
+input[type="file"] {
+    max-width: 350px;
+    cursor: pointer;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+    border-color: var(--color-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+    border: none;
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Button Colors */
+.blue   { background-color: var(--color-blue); }
+.green  { background-color: var(--color-green); }
+.red    { background-color: var(--color-red); }
+.orange { background-color: var(--color-orange); }
+.purple { background-color: var(--color-purple); }
+
+/* ============================================================
+   NOTIFICATIONS / STATUS
+   ============================================================ */
+#registerStatus {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    display: none;
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Đáp ứng yêu cầu: Chữ trắng trên nền đỏ/xanh */
+.success {
+    background-color: rgba(16, 185, 129, 0.15);
+    border: 1px solid var(--color-green);
+    color: #34d399 !important;
+    display: block !important;
+}
+
+.error {
+    background-color: var(--color-red);
+    color: #ffffff !important; /* Đảm bảo chữ màu trắng trên nền đỏ */
+    border: 1px solid #b91c1c;
+    display: block !important;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   DATABASE LIST
+   ============================================================ */
+#databaseList {
+    margin-top: 20px;
+}
+
+.database-summary {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.person {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    transition: var(--transition);
+}
+
+.person:hover {
+    background-color: #333333;
+    transform: translateX(4px);
+}
+
+.person-name {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.person-count {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    background: #000;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+/* ============================================================
+   VERIFY / RESULT BOX
+   ============================================================ */
+.result-box {
+    margin-top: 20px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    min-height: 50px;
+    white-space: pre-line;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.verify-viewer {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 24px auto 0;
+    background-color: #000;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-panel);
+}
+
+#verifyPreview {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+#verifyCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* ============================================================
+   CAMERA
+   ============================================================ */
+.camera-panel {
+    text-align: center;
+}
+
+.camera-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #000;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-color);
+    overflow: hidden;
+    line-height: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+#video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #000;
+}
+
+#canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.camera-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.camera-status {
+    margin-top: 16px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 24px 15px;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+}
+
+.green-text { color: var(--color-green); font-weight: 600; }
+.red-text { color: var(--color-red); font-weight: 600; }
+
+/* ============================================================
+   RESPONSIVE (MOBILE)
+   ============================================================ */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 20px 15px;
+    }
+
+    h1 { font-size: 1.5rem; }
+
+    input[type="text"],
+    input[type="file"] {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .btn { width: 100%; }
+
+    .form-row, 
+    .button-row, 
+    .camera-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .verify-viewer { margin-top: 20px; }
+}
+
+/* ============================================================
+   CUSTOM FILE INPUT
+   ============================================================ */
+input[type="file"] {
+    background-color: var(--bg-input);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px 6px 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: var(--transition);
+    outline: none;
+    max-width: 350px;
+    cursor: pointer;
+}
+
+/* Hiệu ứng khi Hover vào cả khung */
+input[type="file"]:hover {
+    border-color: var(--color-blue);
+    color: var(--text-main);
+    background-color: #323232;
+}
+
+/* Hiệu ứng Focus đồng bộ với ô Text */
+input[type="file"]:focus {
+    border-color: var(--color-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Nút "Choose File" Gradient đẹp mắt bên trong */
+input[type="file"]::file-selector-button {
+    background: linear-gradient(135deg, var(--color-blue), var(--color-purple));
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 15px;
+    margin-right: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+/* Hiệu ứng Hover riêng cho nút Choose File */
+input[type="file"]::file-selector-button:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+}
