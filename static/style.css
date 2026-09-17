@@ -142,11 +142,10 @@ input[type="file"]:focus {
     gap: 8px;
 }
 
-.btn:hover {
-    transform: translateY(-2px);
+/* .btn:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    filter: brightness(1.1);
-}
+    filter: brightness(1.15);
+} */
 
 .btn:active {
     transform: translateY(0);
@@ -404,7 +403,7 @@ input[type="file"]:focus {
 
 /* Nút "Choose File" Gradient đẹp mắt bên trong */
 input[type="file"]::file-selector-button {
-    background: linear-gradient(135deg, var(--color-blue), var(--color-purple));
+    background: var(--color-purple);
     color: #ffffff;
     border: none;
     border-radius: 6px;
@@ -419,7 +418,7 @@ input[type="file"]::file-selector-button {
 }
 
 /* Hiệu ứng Hover riêng cho nút Choose File */
-input[type="file"]::file-selector-button:hover {
+/* input[type="file"]::file-selector-button:hover {
     filter: brightness(1.15);
     box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
-}
+} */
