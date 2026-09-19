@@ -1,5 +1,3 @@
-@import url('[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap)');
-
 :root {
     --bg-main: #121212;
     --bg-panel: #1e1e1e;
@@ -24,9 +22,6 @@
     --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ============================================================
-   RESET & BASE
-   ============================================================ */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -34,7 +29,7 @@
 }
 
 body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: system-ui, -apple-system, sans-serif;
     background-color: var(--bg-main);
     color: var(--text-main);
     line-height: 1.5;
@@ -48,9 +43,6 @@ body {
     padding: 40px 0;
 }
 
-/* ============================================================
-   TYPOGRAPHY
-   ============================================================ */
 h1 {
     text-align: center;
     font-size: 2rem;
@@ -96,6 +88,11 @@ h2 {
 /* ============================================================
    FORMS & INPUTS
    ============================================================ */
+.search-box {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 input[type="text"],
 input[type="file"] {
     background-color: var(--bg-input);
@@ -113,15 +110,41 @@ input[type="text"] {
     width: 280px;
 }
 
+input[type="text"].search-box {
+    width: 100%;
+}
+
 input[type="file"] {
     max-width: 350px;
     cursor: pointer;
+    padding: 6px 12px 6px 6px;
 }
 
 input[type="text"]:focus,
 input[type="file"]:focus {
     border-color: var(--color-blue);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+input[type="file"]:hover {
+    border-color: var(--color-blue);
+    color: var(--text-main);
+    background-color: #323232;
+}
+
+input[type="file"]::file-selector-button {
+    background: var(--color-purple);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 15px;
+    margin-right: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
 }
 
 /* ============================================================
@@ -140,18 +163,10 @@ input[type="file"]:focus {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    font-family: inherit;
 }
 
-/* .btn:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    filter: brightness(1.15);
-} */
-
-.btn:active {
-    transform: translateY(0);
-}
-
-/* Button Colors */
+.btn:active { transform: translateY(0); }
 .blue   { background-color: var(--color-blue); }
 .green  { background-color: var(--color-green); }
 .red    { background-color: var(--color-red); }
@@ -170,7 +185,6 @@ input[type="file"]:focus {
     animation: slideDown 0.3s ease-out forwards;
 }
 
-/* Đáp ứng yêu cầu: Chữ trắng trên nền đỏ/xanh */
 .success {
     background-color: rgba(16, 185, 129, 0.15);
     border: 1px solid var(--color-green);
@@ -180,7 +194,7 @@ input[type="file"]:focus {
 
 .error {
     background-color: var(--color-red);
-    color: #ffffff !important; /* Đảm bảo chữ màu trắng trên nền đỏ */
+    color: #ffffff !important;
     border: 1px solid #b91c1c;
     display: block !important;
 }
@@ -190,51 +204,149 @@ input[type="file"]:focus {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.stats {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: bold;
+}
+
 /* ============================================================
-   DATABASE LIST
+   DATABASE TABLE (SCROLLABLE > 5 ROWS)
    ============================================================ */
-#databaseList {
-    margin-top: 20px;
-}
-
-.database-summary {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 16px;
-}
-
-.person {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--bg-input);
+.table-wrapper {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
+    background-color: var(--bg-input);
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 18px;
+    background-color: #202020;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+#databaseList {
+    display: flex;
+    flex-direction: column;
+    max-height: 270px; 
+    overflow-y: auto;
+}
+
+#databaseList::-webkit-scrollbar { width: 8px; }
+#databaseList::-webkit-scrollbar-track { background: var(--bg-input); }
+#databaseList::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+#databaseList::-webkit-scrollbar-thumb:hover { background: #777; }
+
+/* 
+   =========================
+   STYLE MỚI CHO TỪNG DÒNG
+   =========================
+*/
+
+#databaseList > div {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Tạo khoảng cách vừa đủ giữa Tên và Số lượng ảnh */
     padding: 14px 18px;
-    margin-bottom: 10px;
-    transition: var(--transition);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
 }
 
-.person:hover {
+#databaseList > div:last-child {
+    border-bottom: none;
+}
+
+#databaseList > div:hover {
     background-color: #333333;
-    transform: translateX(4px);
 }
 
-.person-name {
+/* Tên người */
+.person-name, .db-name {
     font-weight: 600;
     font-size: 1rem;
 }
 
-.person-count {
+/* Số lượng ảnh nằm ngay cạnh tên */
+.person-count, .db-count {
     color: var(--text-muted);
     font-size: 0.85rem;
     background: #000;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 20px;
+    font-weight: 500;
+}
+
+#databaseList > div button,
+.btn-delete {
+    margin-left: auto; 
+    background-color: var(--color-red) !important;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* Hiệu ứng khi di chuột vào nút Xóa */
+#databaseList > div button:hover,
+.btn-delete:hover {
+    background-color: #b91c1c !important; 
+}
+
+/* Tên người */
+.person-name, .db-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-right: 12px; /* Tạo khoảng cách vừa đủ với huy hiệu số lượng ảnh */
+}
+
+/* 
+   Số lượng ảnh nằm ngay cạnh tên 
+   margin-right: auto sẽ ép toàn bộ phần tử phía sau (nút Xóa) dạt sát về góc phải 
+*/
+.person-count, .db-count {
+    margin-right: auto; 
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    background: #000;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Nút xóa - Nền đỏ, chữ trắng */
+.btn-delete {
+    background-color: var(--color-red);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* Khi di chuột vào sẽ chuyển sang màu đỏ tối hơn */
+.btn-delete:hover {
+    background-color: #b91c1c; 
 }
 
 /* ============================================================
-   VERIFY / RESULT BOX
+   VERIFY / RESULT BOX / CAMERA
    ============================================================ */
 .result-box {
     margin-top: 20px;
@@ -243,29 +355,25 @@ input[type="file"]:focus {
     border-radius: var(--radius-sm);
     padding: 16px;
     min-height: 50px;
-    white-space: pre-line;
     font-size: 0.95rem;
     line-height: 1.6;
 }
 
-.verify-viewer {
+.visual-container {
     position: relative;
-    width: 100%;
-    max-width: 1000px;
-    margin: 24px auto 0;
-    background-color: #000;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    background: #000;
     border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: var(--shadow-panel);
+    border: 1px solid var(--border-color);
 }
 
-#verifyPreview {
-    display: block;
-    width: 100%;
+#video, #verifyCanvas {
+    max-width: 100%;
     height: auto;
-    max-height: 70vh;
-    object-fit: contain;
-    margin: 0 auto;
+    display: block;
 }
 
 #verifyCanvas {
@@ -278,147 +386,16 @@ input[type="file"]:focus {
 }
 
 /* ============================================================
-   CAMERA
-   ============================================================ */
-.camera-panel {
-    text-align: center;
-}
-
-.camera-container {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #000;
-    border-radius: var(--radius-md);
-    border: 2px solid var(--border-color);
-    overflow: hidden;
-    line-height: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-}
-
-#video {
-    display: block;
-    width: 100%;
-    height: auto;
-    background-color: #000;
-}
-
-#canvas {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.camera-controls {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-}
-
-.camera-status {
-    margin-top: 16px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer {
-    text-align: center;
-    color: var(--text-muted);
-    padding: 24px 15px;
-    font-size: 0.9rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 40px;
-}
-
-.green-text { color: var(--color-green); font-weight: 600; }
-.red-text { color: var(--color-red); font-weight: 600; }
-
-/* ============================================================
-   RESPONSIVE (MOBILE)
+   RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {
     .container {
         width: 100%;
         padding: 20px 15px;
     }
-
     h1 { font-size: 1.5rem; }
-
     input[type="text"],
-    input[type="file"] {
-        width: 100%;
-        max-width: 100%;
-    }
-
+    input[type="file"] { width: 100%; max-width: 100%; }
     .btn { width: 100%; }
-
-    .form-row, 
-    .button-row, 
-    .camera-controls {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .verify-viewer { margin-top: 20px; }
+    .form-row, .button-row { flex-direction: column; align-items: stretch; }
 }
-
-/* ============================================================
-   CUSTOM FILE INPUT
-   ============================================================ */
-input[type="file"] {
-    background-color: var(--bg-input);
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: 6px 12px 6px 6px;
-    font-size: 0.95rem;
-    font-family: inherit;
-    transition: var(--transition);
-    outline: none;
-    max-width: 350px;
-    cursor: pointer;
-}
-
-/* Hiệu ứng khi Hover vào cả khung */
-input[type="file"]:hover {
-    border-color: var(--color-blue);
-    color: var(--text-main);
-    background-color: #323232;
-}
-
-/* Hiệu ứng Focus đồng bộ với ô Text */
-input[type="file"]:focus {
-    border-color: var(--color-blue);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-
-/* Nút "Choose File" Gradient đẹp mắt bên trong */
-input[type="file"]::file-selector-button {
-    background: var(--color-purple);
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    padding: 7px 15px;
-    margin-right: 12px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
-}
-
-/* Hiệu ứng Hover riêng cho nút Choose File */
-/* input[type="file"]::file-selector-button:hover {
-    filter: brightness(1.15);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
-} */

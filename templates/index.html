@@ -5,17 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Face Recognition App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        /* Bổ sung CSS nhỏ cho danh sách database và form */
-        .db-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #eee; }
-        .db-info { display: flex; flex-direction: column; }
-        .db-name { font-weight: bold; font-size: 16px; }
-        .db-count { font-size: 13px; color: #fff; }
-        .search-box { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
-        .btn-small { padding: 5px 10px; font-size: 13px; cursor: pointer; border: none; border-radius: 4px; color: white; background-color: #f44336; }
-        .stats { margin-bottom: 15px; font-size: 14px; color: #ffffff; font-weight: bold; }        .visual-container { position: relative; margin-top: 15px; display: flex; justify-content: center; background: #f0f0f0; border-radius: 8px; overflow: hidden;}
-        #video, #verifyCanvas { max-width: 100%; height: auto; }
-    </style>
 </head>
 <body>
 
@@ -42,7 +31,16 @@
         <h2>Dữ liệu khuôn mặt</h2>
         <input type="text" id="searchInput" class="search-box" placeholder="Tìm kiếm tên..." onkeyup="filterDatabase()">
         <div id="databaseStats" class="stats"></div>
-        <div id="databaseList"></div>
+        
+        <!-- Bảng hiển thị dữ liệu có thanh cuộn -->
+        <div class="table-wrapper">
+            <div class="table-header">
+                <div class="col-name">Tên khuôn mặt</div>
+                <div class="col-action">Thao tác</div>
+            </div>
+            <!-- Dữ liệu từ JS sẽ được đẩy vào trong div này -->
+            <div id="databaseList"></div>
+        </div>
     </section>
 
     <!-- ================================================= -->
@@ -69,12 +67,6 @@
         </div>
     </section>
 
-    <!-- <footer style="margin-top: 20px; text-align: center;">
-        Xanh = Đã nhận diện <span class="green-text" style="color: #00c853;">■</span>
-        &nbsp;&nbsp;
-        Đỏ = Unknown <span class="red-text" style="color: #ff1744;">■</span>
-    </footer> -->
-    
 </div>
 
 <script src="{{ url_for('static', filename='app.js') }}"></script>
