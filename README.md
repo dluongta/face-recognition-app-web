@@ -1,8 +1,8 @@
 ## Overview
 
-- Register photos with person's name.
-- Delete registered person's photos.
-- Recognize person's name in photos taken with a camera or stored on the device.
+- Register photos with a person's name.
+- Search, view, and delete registered people.
+- Recognize people in photos stored on the device.
 
 ## Install
 
