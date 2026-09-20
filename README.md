@@ -2,7 +2,7 @@
 
 - Register photos with a person's name.
 - Search, view, and delete registered people.
-- Recognize people in photos stored on the device.
+- Recognize people in photos stored on your device or captured with your camera.
 
 ## Install
 
