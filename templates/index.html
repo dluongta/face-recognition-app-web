@@ -19,7 +19,7 @@
         <div class="form-row">
             <input type="text" id="personName" placeholder="Nhập tên người...">
             <input type="file" id="registerImages" accept="image/*" multiple>
-            <button class="btn blue" onclick="registerPerson()">Tải lên & Đăng ký</button>
+            <button class="btn blue" onclick="registerPerson()">Đăng ký + Tải ảnh</button>
         </div>
         <div id="registerStatus"></div>
     </section>
@@ -35,8 +35,8 @@
         <!-- Bảng hiển thị dữ liệu có thanh cuộn -->
         <div class="table-wrapper">
             <div class="table-header">
-                <div class="col-name">Tên khuôn mặt</div>
-                <div class="col-action">Thao tác</div>
+                <div class="col-name" style="color: #fff;">Tên khuôn mặt</div>
+                <div class="col-action" style="color: #fff;">Thao tác</div>
             </div>
             <!-- Dữ liệu từ JS sẽ được đẩy vào trong div này -->
             <div id="databaseList"></div>
