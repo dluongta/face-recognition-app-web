@@ -278,7 +278,7 @@ input[type="file"]::file-selector-button {
 .person-count, .db-count {
     color: #fff;
     font-size: 0.85rem;
-    background: #8b5cf6;
+    background: #10b981;
     padding: 4px 12px;
     border-radius: 20px;
     font-weight: 500;
@@ -320,7 +320,7 @@ input[type="file"]::file-selector-button {
     margin-right: auto; 
     color: #fff;
     font-size: 0.85rem;
-    background: #8b5cf6;
+    background: #10b981;
     padding: 4px 12px;
     border-radius: 20px;
     font-weight: 500;
