@@ -20,5 +20,5 @@ python -m PyInstaller --onefile --windowed --name FaceRecognitionAppWeb --add-da
 ## Run
 
 ```
-python main.py
+python app.py
 ```
