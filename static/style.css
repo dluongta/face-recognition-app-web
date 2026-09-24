@@ -276,9 +276,9 @@ input[type="file"]::file-selector-button {
 
 /* Số lượng ảnh nằm ngay cạnh tên */
 .person-count, .db-count {
-    color: var(--text-muted);
+    color: #fff;
     font-size: 0.85rem;
-    background: #000;
+    background: #8b5cf6;
     padding: 4px 12px;
     border-radius: 20px;
     font-weight: 500;
@@ -318,9 +318,9 @@ input[type="file"]::file-selector-button {
 */
 .person-count, .db-count {
     margin-right: auto; 
-    color: var(--text-muted);
+    color: #fff;
     font-size: 0.85rem;
-    background: #000;
+    background: #8b5cf6;
     padding: 4px 12px;
     border-radius: 20px;
     font-weight: 500;
