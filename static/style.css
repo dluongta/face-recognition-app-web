@@ -3,7 +3,6 @@
     --bg-panel: #1e1e1e;
     --bg-input: #2a2a2a;
     --text-main: #ffffff;
-    --text-muted: #a1a1aa;
     --border-color: #3f3f46;
     
     /* Bảng màu chuẩn */
@@ -230,7 +229,7 @@ input[type="file"]::file-selector-button {
     font-weight: 600;
     font-size: 0.95rem;
     border-bottom: 2px solid var(--border-color);
-    color: var(--text-muted);
+    color: #a1a1aa;
 }
 
 #databaseList {
