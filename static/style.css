@@ -229,7 +229,7 @@ input[type="file"]::file-selector-button {
     font-weight: 600;
     font-size: 0.95rem;
     border-bottom: 2px solid var(--border-color);
-    color: #a1a1aa;
+    color: var(--text-main);
 }
 
 #databaseList {
